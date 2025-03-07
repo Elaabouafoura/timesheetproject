@@ -25,11 +25,11 @@ pipeline {
                 sh 'mvn deploy -Dmaven.test.skip=true'
             }
         }
-
+ */
         stage('Docker Build') {
             steps {
                 
-              docker build -t elaabouafoura/timesheet-devops:1.0.0 .
+              docker build -t bouafouraelaa/timesheet-devops:1.0.0 .
         }
         }
     }
