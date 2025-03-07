@@ -20,17 +20,29 @@ pipeline {
             }
         }
         */
-       stage('MVN Nexus') {
+   stage('MVN Nexus') {
             steps {
                 sh 'mvn install -Dmaven.test.skip=true'
             }
         }
-         stage('Docker Image') {
+
+        stage('Docker Build') {
             steps {
-                  sh 'docker build -t bouafouraelaa/timesheet-devops-1.0 .'
+                // Vérifier la structure du projet après le clone
+                sh 'ls -la'
+                sh 'ls -la timesheetproject-master'
 
+                // Vérifier si Dockerfile existe
+                sh '''
+                if [ ! -f timesheetproject-master/Dockerfile ]; then
+                    echo "Dockerfile introuvable !"
+                    exit 1
+                fi
+                '''
 
+                // Construction de l'image Docker avec le bon chemin
+                sh 'docker buildx build -t bouafouraelaa/timesheet-devops-1.0 -f Dockerfile '
             }
-    }
+        }
     }
 }
