@@ -27,7 +27,7 @@ pipeline {
         }
          stage('Docker Image') {
             steps {
-                sh 'docker buildx build -t bouafouraelaa/timesheet-devops-1.0 timesheetproject-master/Dockerfile'
+                sh 'docker buildx build -t bouafouraelaa/timesheet-devops-1.0 Dockerfile'
 
 
             }
