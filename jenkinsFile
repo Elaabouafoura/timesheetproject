@@ -20,19 +20,17 @@ pipeline {
             }
         }
         */
-  stage('MVN Nexus') {
+       stage('MVN Nexus') {
             steps {
-                sh 'mvn deploy -Dmaven.test.skip=true'
+                sh 'mvn install -Dmaven.test.skip=true'
             }
         }
-/*
-stage('Docker Image') {
+         stage('Docker Image') {
             steps {
-                sh 'docker build -t bouafouraelaa/timesheet-devops:1.0 .'
+                sh 'docker buildx build -t bouafouraelaa/timesheet-devops-1.0 timesheetproject-master/Dockerfile'
+
 
             }
     }
-
-    */ 
     }
 }
