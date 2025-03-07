@@ -25,17 +25,13 @@ pipeline {
                 sh 'mvn deploy -Dmaven.test.skip=true'
             }
         }
+
 stage('Docker Image') {
             steps {
-                sh 'docker build -t bouafouraelaa/timesheet-devops:1.0.0 .'
+                sh 'docker build -t bouafouraelaa/timesheet-devops:1.0. .'
 
             }
     }
-         stage('Docker deploy') {
-            steps {
-                sh 'docker push  bouafouraelaa/timesheet-devops:1.0.0 .'
-
-            }
-    }
+     
     }
 }
